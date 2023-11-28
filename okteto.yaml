@@ -83,8 +83,17 @@ dev:
     command: bash
     sync:
     - kitchen:/usr/src/app
+    volumes:
+      - /go
+      - /root/.cache
     environment:
      GIN_MODE: debug
+    securityContext:
+      capabilities:
+        add:
+          - SYS_PTRACE
+    forward:
+    - 2345:2345
   
   check:
     command: bash

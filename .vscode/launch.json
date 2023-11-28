@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Connect to okteto",
+            "name": "debug menu",
             "type": "node",
             "request": "attach",
             "address": "localhost",
@@ -13,5 +13,15 @@
                 "<node_internals>/**"
             ]
         },
+        {
+            "name": "Connect to okteto",
+            "type": "go",
+            "request": "attach",
+            "mode": "remote",
+            "remotePath": "/usr/src/app",
+            "port": 2345,
+            "host": "localhost",
+            "cwd": "${workspaceFolder}/kitchen"
+        }
     ]
 }
