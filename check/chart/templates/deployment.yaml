@@ -43,7 +43,14 @@ spec:
 
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+          - mountPath: /data
+            name: data
       {{- with .Values.nodeSelector }}
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: {{ include "check.fullname" . }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
