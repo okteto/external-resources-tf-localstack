@@ -1,48 +1,68 @@
-# Create a Development Environment with Okteto, Kubernetes, and Localstack AWS services
+# Restaurant microservice with Okteto, Kubernetes, and AWS services with LocalStack
 
-This is an example of how to configure and deploy a development environment that includes polyglot microservices, an AWS SQS queue, and an S3 bucket. The AWS infrastructure is deployed using LocalStack to keep things simple.
+| Key          | Value                                                                                               |
+| ------------ | --------------------------------------------------------------------------------------------------- |
+| Environment  | LocalStack, Okteto                                                                                  |
+| Services     | S3, SQS                                                                                             |
+| Integrations | Kubernetes, Okteto                                                                                  |
+| Categories   | Microservices                                                                                       |
+| Level        | Basic                                                                                               |
+| GitHub       | [Repository link](https://github.com/localstack-samples/sample-restaurant-microservices-sqs-okteto) |
+
+## Introduction
+
+This repository contains a sample restaurant microservices application that uses Okteto, Kubernetes, and AWS services with LocalStack. The application consists of three microservices:
+
+- Menu microservice to place new orders at the restaurant.
+- Kitchen microservice to manage the cooking queue at the restaurant.
+- Check microservice to view the order and download the receipt.
+
+The application provisions the required cloud infrastructure (S3 & SQS) using LocalStack, and the microservices are deployed on a Kubernetes cluster using Okteto.
 
 ## Architecture
 
-![Architecture diagram](https://raw.githubusercontent.com/okteto/external-resources-tf-localstack/main/docs/architecture.png)
+![Architecture](./images/architecture.png)
 
-## Run the demo application in Okteto
+## Prerequisites
 
-### Prequisites:
-1. Okteto CLI 2.23 or newer
-1. An Okteto account ([Sign-up](https://www.okteto.com/try-free/) for 30 day, self-hosted free trial)
+- Okteto CLI 2.23 or newer
+- An Okteto account ([Sign-up](https://www.okteto.com/try-free/) for 30 day, self-hosted free trial)
+
 Once this is configured, anyone with access to your Okteto instance will be able to deploy an development environment automatically, including the required cloud infrastructure.
 
+## Instructions
 
-```
-$ git clone https://github.com/okteto/external-resources-tf-localstack
-$ cd external-resources-tf-localstack
-$ okteto context use $OKTETO_URL
-$ okteto deploy
-```
+You can setup the development environment by cloning the repository and deploying the application using the following commands:
 
-## Develop on the Menu microservice
-
-```
-$ okteto up menu
+```bash
+git clone https://github.com/okteto/external-resources-tf-localstack
+cd external-resources-tf-localstack
+okteto context use $OKTETO_URL
+okteto deploy
 ```
 
-## Develop on the Kitchen microservice
+Replace `$OKTETO_URL` with the URL of your Okteto instance. You will be able to access the application at the URL of your Okteto instance.
 
+| ![Image 1](./images/menu.png) | ![Image 2](./images/check.png) | ![Image 3](./images/kitchen.png) |
+|:---:|:---:|:---:|
+| *Menu microservice* | *Check microservice* | *Kitchen microservice* |
+
+You can start developing on the Menu microservice by running the following command:
+
+```bash
+okteto up menu
 ```
-$ okteto up kitchen
+
+You can similarly start developing on the Kitchen microservice by running the following command:
+
+```bash
+okteto up kitchen
 ```
 
-## Develop on the Result microservice
+To develop on the Result microservice, run the following command:
 
+```bash
+okteto up check
 ```
-$ okteto up check
-```
 
-## Notes
-
-This isn't an example of a properly architected perfectly designed distributed app... it's a simple
-example of the various types of pieces and languages you might see (queues, persistent data, etc), and how to
-deal with them in Okteto.
-
-Happy coding!
+You can also setup preview environments for each of the microservices by using the [GitHub Action workflows](.github/workflows) provided in the repository. Refer to the [Okteto documentation](https://www.okteto.com/docs/preview/github/using-github-actions/) for more information on how to use Okteto for preview environments.
