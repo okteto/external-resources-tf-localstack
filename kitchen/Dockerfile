@@ -1,4 +1,4 @@
-FROM golang:buster as dev
+FROM golang:1.23-bookworm AS dev
 
 WORKDIR /usr/src/app
 RUN go install github.com/codegangsta/gin@latest
