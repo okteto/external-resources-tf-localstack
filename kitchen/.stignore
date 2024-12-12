@@ -1,3 +1,6 @@
 # binaries
 gin-bin
 kitchen
+
+# helm chart
+chart

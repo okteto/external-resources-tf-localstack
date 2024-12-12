@@ -1,0 +1,6 @@
+.flox
+.github
+.vscode
+s3
+sqs
+__debug_bin*

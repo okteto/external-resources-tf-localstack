@@ -95,8 +95,15 @@ dev:
       capabilities:
         add:
           - SYS_PTRACE
+
+  kitchen-hybrid:
+    mode: hybrid
+    command: flox activate
+    workdir: kitchen
+    environment:
+     GIN_MODE: debug
     forward:
-    - 2345:2345
+    - 4566:localstack:4566
   
   check:
     command: bash
