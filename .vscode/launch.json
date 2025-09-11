@@ -14,7 +14,7 @@
             ]
         },
         {
-            "name": "Connect to okteto",
+            "name": "debug kitchen",
             "type": "go",
             "request": "attach",
             "mode": "remote",
