@@ -3,8 +3,8 @@ module github.com/okteto/external-resources-aws-demo/kitchen
 go 1.23
 
 require (
-	github.com/aws/aws-sdk-go v1.44.229
-	github.com/gin-gonic/gin v1.9.0
+	github.com/aws/aws-sdk-go v1.55.5
+	github.com/gin-gonic/gin v1.10.0
 )
 
 require (

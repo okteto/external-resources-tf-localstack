@@ -2,9 +2,9 @@ FROM golang:1.23-bookworm AS dev
 
 WORKDIR /usr/src/app
 RUN go install github.com/codegangsta/gin@latest
-COPY go.mod go.sum /usr/src/app/
-RUN go mod tidy
+COPY go.mod /usr/src/app/
 COPY . . 
+RUN go mod tidy
 RUN --mount=type=cache,target=/root/.cache/go-build go build -o /usr/local/bin/kitchen
 
 FROM busybox
