@@ -13,6 +13,7 @@ jobs:
       with:
         url: ${{secrets.OKTETO_URL}}
         token: ${{ secrets.OKTETO_TOKEN }}
+        log-level: debug
 
     - name: Deploy preview environment
       uses: okteto/deploy-preview@latest
